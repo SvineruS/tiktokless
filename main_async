@@ -13,7 +13,7 @@ async def main(url: str):
     vid_page = await TikTok.SESSION.get(url, headers=USER_AGENT)
     url = str(vid_page.url)
     if url == 'https://www.tiktok.com/':  # redirect if wrong url
-        raise Exceptions.WrongUrl()
+        raise Exception("Wrong url")
     if vid_page.status == 301:
         return await get_vid(url)
         
